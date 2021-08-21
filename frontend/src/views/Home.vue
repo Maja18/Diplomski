@@ -5,7 +5,7 @@
                 src="@/images/ptica.png">
   </section>
   <section class="hero is-dark">
-   <h2 style="margin-top:-20px">Dobrodosli u Benu sistem apoteka</h2>
+   <h2 style="margin-top:-20px">Dobrodošli u Benu sistem apoteka</h2>
       <h4 style=" margin-top:40px; width: 158px;">NAŠ BLOG</h4> 
    </section>
 <div style="margin-top:-180px; margin-left:0px;">

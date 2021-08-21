@@ -16,7 +16,7 @@
       </b-input-group-prepend>
       <b-form-input type="search" placeholder="ime leka"></b-form-input>
     </b-input-group>
-                <b-button pill style="margin-left:1%; margin-top:-10px" v-on:click = "searchDrug" variant="info">Traži</b-button>
+                <b-button pill style="margin-left:1%; margin-top:-10px;width:100px" v-on:click = "searchDrug" variant="info">Traži</b-button>
                
             </b-form>
         </div>  
@@ -161,11 +161,11 @@ export default {
        sortDesc: false,
        fieldForSorting: "grade",
        fields: [
-          { key: 'name', label: 'Name' },
-          { key: 'type', label: 'Type' },
-          { key: 'grade', label: 'Grade' },
-          {label: 'Specification'},
-          { label: 'Availability'}
+          { key: 'name', label: 'Ime' },
+          { key: 'type', label: 'Tip' },
+          { key: 'grade', label: 'Ocena' },
+          {label: 'Specifikacija'},
+          { label: 'Dostupnost'}
         ],
         selectMode: 'single',
        drugInfo : {

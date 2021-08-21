@@ -52,7 +52,7 @@
                     <b-form-input type="password" v-model="newPasswordRepeat" required></b-form-input>
                 </b-input-group>
             </div>
-                        <b-button style="width:160px; margin-left:290px; margin-top:-50px" pill variant="info" @click= "changePassword($event)" class="btn btn-primary">Potvrdi</b-button>        
+                        <b-button style="width:180px; margin-left:290px; margin-top:-50px;  background:  #174452;color:white" pill  @click= "changePassword($event)" class="btn btn-primary">Potvrdi</b-button>        
                     </div>                
                 </div>
             </div>

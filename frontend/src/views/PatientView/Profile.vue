@@ -4,8 +4,8 @@
             <span style="float: left; margin: 15px;">
                 <img @click="proba" class="image_style space_style" style="width: 170px; height: 50px; left:10px;"
                 src="@/images/benu.png">
-                   <b-button style="margin-left:30px" pill class = "btn btn-info btn-lg space_style" v-on:click = "showProfile">Profil</b-button>
-                    <b-button pill class = "btn btn-info btn-lg space_style"  v-on:click = "showSubsribedPharmacies">Pretplaćene apoteke</b-button>
+                   <b-button  style="margin-left:30px" pill class = "btn btn-info btn-lg space_style" v-on:click = "showProfile">Profil</b-button>
+                    <b-button :pressed="true" pill class = "btn btn-info btn-lg space_style"  v-on:click = "showSubsribedPharmacies">Pretplaćene apoteke</b-button>
                     <b-button pill class = "btn btn-info btn-lg space_style" v-on:click = "writeComplaint">Žalbe</b-button>
                     <b-button pill class = "btn btn-info btn-lg space_style" v-on:click = "showEPrescription">ERecept</b-button>
             </span>

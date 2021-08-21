@@ -4,7 +4,7 @@
             <span style="float: left; margin: 15px;">
                 <img class="image_style space_style" style="width: 170px; height: 50px; left:10px;"
                 src="@/images/benu.png">
-                     <b-button pill variant="info" style="margin-left:30px" class = "btn btn-info btn-lg space_style" v-on:click = "showProfile">Profil</b-button>
+                     <b-button  pill variant="info" style="margin-left:30px" class = "btn btn-info btn-lg space_style" v-on:click = "showProfile">Profil</b-button>
                       <b-dropdown style="height:45px;color:black" text="Registracija" variant="info" pill >
                          <b-dropdown-item href="/pharmacyRegistration">Apoteke</b-dropdown-item>
                          <b-dropdown-item href="/dermatologyRegistration">Dermatologa</b-dropdown-item>

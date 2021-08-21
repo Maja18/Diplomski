@@ -11,10 +11,11 @@
            <b-button pill variant="info"  href="http://localhost:8081/">
           <strong>Pocetna</strong>
            </b-button>
-          <b-button pill variant="info"  href="/about">
+           {{isActive}}
+          <b-button  pill variant="info" href="/about" >
             <strong>O nama</strong>
           </b-button>
-            <b-button pill variant="info"  href="/promotions">
+            <b-button pill variant="info"   href="/promotions">
             <strong>Akcije i promocije</strong>
             </b-button>
            <b-button pill variant="info"  href="/showDrugs">
@@ -37,7 +38,9 @@
 </template>
 <script>
 export default {
-    name: 'Nav'
+    name: 'Nav',
+   
+     
 }
 </script>
 <style scoped>
@@ -46,6 +49,7 @@ export default {
     margin-bottom: 5px;
     background-color: #17a2b8;
   } 
+
   .navbar a {
   text-align: center;
   padding: 15px;

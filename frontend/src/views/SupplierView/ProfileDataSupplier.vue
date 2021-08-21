@@ -4,8 +4,8 @@
             <span style="float: left; margin: 15px;">
                 <img class="image_style space_style" style="width: 170px; height: 50px; left:10px;"
                 src="@/images/benu.png">
-                  <b-button pill  style="margin-left:30px" class = "btn btn-info btn-lg space_style" v-on:click = "showPharmacyPage">Pharmacy home page</b-button>
-                    <b-button pill class = "btn btn-info btn-lg space_style" v-on:click = "showProfile">Profil</b-button>
+                 
+                    <b-button :pressed="true" pill style="margin-left:30px" class = "btn btn-info btn-lg space_style" v-on:click = "showProfile">Profil</b-button>
                     <b-button pill class = "btn btn-info btn-lg space_style" v-on:click = "showMyOffers">Pregled mojih ponuda</b-button>
                     <b-button pill class = "btn btn-info btn-lg space_style" v-on:click = "showGiveOffers">Daj ponudu</b-button>
                     <b-button pill class = "btn btn-info btn-lg space_style" v-on:click = "showMyDrugs">Lekovi</b-button>
@@ -27,10 +27,10 @@
                <div class=" d-inline-block " style=" height:100%; background-color: #ced2d3;">
                     <h4 style = "position:left; left:60px; top:2px; background-color:#ebf0fa;"><b>Dobavljač: {{supplier.name}}  {{supplier.surname}} </b></h4>
                     <div class="p-3 py-5 ">
-                    <div class="col-md-8 ">Ime
+                    <div class="col-md-8 ">
                     <div class="card mb-3 " style = "position:right; left:90px; top:2px; background-color:#ebf0fa;">
                     <div class="card-body" style="background-color: #ebf0fa;">
-                        <h4 class ="text-justify top-buffer"> : Ime {{supplier.name}}  </h4>
+                        <h4 class ="text-justify top-buffer"> Ime: {{supplier.name}}  </h4>
                         <hr>
                         <h4 class ="text-justify top-buffer"> Prezime:   {{supplier.surname}}  </h4>
                         <hr>

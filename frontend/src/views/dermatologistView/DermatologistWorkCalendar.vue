@@ -7,7 +7,7 @@
                 src="@/images/benu.png">
                 <b-button style="margin-left:20px" pill class = "btn btn-info btn-lg space_style" v-on:click = "showProfile">Profil</b-button>
                 <b-button pill class = "btn btn-info btn-lg space_style" v-on:click = "showPatients">Pacijenti</b-button>
-                <b-button pill class = "btn btn-info btn-lg space_style" v-on:click = "showWorkCalendar">Radni kalendar</b-button>
+                <b-button :pressed="true" pill class = "btn btn-info btn-lg space_style" v-on:click = "showWorkCalendar">Radni kalendar</b-button>
                 <b-button pill class = "btn btn-info btn-lg space_style" v-on:click = "showAbsenceRequest">Odmor</b-button>
                 <b-button pill class = "btn btn-info btn-lg space_style" v-on:click = "showExaminations">Pregledi</b-button>
                 <b-button pill class = "btn btn-info btn-lg space_style" v-on:click = "showNewExamination">Nov pregled</b-button>
@@ -46,9 +46,9 @@
                 <i>{{ arg.event.title }}</i>
                 </template>
             </FullCalendar>
-            <b-modal ref="my-modal"  hide-footer title= "Examination info:">
+            <b-modal ref="my-modal"  hide-footer title= "Podaci o pregledu:">
                 <b-row text-align-center>
-                <b-col sm="3"> Pharmacy </b-col>
+                <b-col sm="3"> Apoteka: </b-col>
                 <b-col>
                     <h5
                     text-align-center
@@ -59,7 +59,7 @@
                 </b-col>
                 </b-row>
                 <b-row>
-                <b-col sm="3"> Patient </b-col>
+                <b-col sm="3"> Pacijent: </b-col>
                 <b-col>
                     <h5
                     text-align-center
@@ -70,7 +70,7 @@
                 </b-col>
                 </b-row>
                 <b-row>
-                <b-col sm="3"> Start time </b-col>
+                <b-col sm="3"> Početak: </b-col>
                 <b-col>
                     <h5
                     text-align-center
@@ -81,7 +81,7 @@
                 </b-col>
                 </b-row>
                 <b-row>
-                <b-col sm="3"> Duration </b-col>
+                <b-col sm="3"> Trajanje: </b-col>
                 <b-col>
                     <h5
                     text-align-center
@@ -93,19 +93,21 @@
                 </b-row>
                 <b-row>
                 <b-col>
-                    <b-button
+                    <b-button pill
                     class="button_custom"
+                    style="color:black; margin-top:20px"
                     variant="info"
                     @click="hideModal"
-                    >Close</b-button
+                    >Zatvori</b-button
                     >
                 </b-col>
                 <b-col v-if="startExamination==true"> 
                     <router-link :to="{ name: 'DermatologistExamination', params: {selectedExamination: this.examinationId}}" class="search-btn">
-                        <b-button
+                        <b-button pill
+                        style="color:black; margin-top:20px"
                         class="button_custom"
                         variant="info">
-                        Start examination
+                        Započni pregled
                         </b-button>
                     </router-link>
                 </b-col>

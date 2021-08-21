@@ -44,6 +44,7 @@ import ISA.Team22.Domain.Users.Patient;
 import ISA.Team22.Domain.Users.Person;
 import ISA.Team22.Domain.Users.Pharmacist;
 import ISA.Team22.Exception.ResourceConflictException;
+import ISA.Team22.Domain.Users.City;
 import ISA.Team22.Domain.Users.Dermatologist;
 import ISA.Team22.Domain.Users.Person;
 import ISA.Team22.Service.DermatologistService;
@@ -96,15 +97,16 @@ public class PharmacyController {
     }
 	
 	@GetMapping("/pharmacies")
-	@PreAuthorize("hasRole('PATIENT')")  //mozda treba za jos koju rolu
+	//@PreAuthorize("hasRole('PATIENT')")  //mozda treba za jos koju rolu
 	public ResponseEntity<List<PharmacyBasicDTO>> getAllPharmacies() {
-		Authentication currentUser = SecurityContextHolder.getContext().getAuthentication();
-		Person person = (Person) currentUser.getPrincipal();
+		
 		List<Pharmacy> pharmacies = pharmacyService.findAll();
 		List<PharmacyBasicDTO> pharmaciesDTOs = new ArrayList<PharmacyBasicDTO>();
 		
 		for(Pharmacy p:pharmacies) {
-			PharmacyBasicDTO pharmacyBasicDTO = new PharmacyBasicDTO(p.getId(), p.getName());
+			City city = p.getAddress().getCity();
+			String town = city.getName();
+			PharmacyBasicDTO pharmacyBasicDTO = new PharmacyBasicDTO(p.getId(), p.getName(), p.getAllGrades(), town, p.getAddress().getStreetName(),p.getAddress().getStreetNumber());
 			pharmaciesDTOs.add(pharmacyBasicDTO);
 		}
 		

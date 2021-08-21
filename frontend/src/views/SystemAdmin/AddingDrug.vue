@@ -11,7 +11,7 @@
                          <b-dropdown-item href="/dermatologyRegistration">Farmaceuta</b-dropdown-item>
                          <b-dropdown-item href="/supplierRegistration">Dobavljača</b-dropdown-item>
                     </b-dropdown>
-                    <b-button pill variant="info" class = "btn btn-info btn-lg space_style" v-on:click = "showDrugManipulation">Lekovi</b-button>
+                    <b-button :pressed="true" pill variant="info" class = "btn btn-info btn-lg space_style" v-on:click = "showDrugManipulation">Lekovi</b-button>
                     <b-button pill variant="info" class = "btn btn-info btn-lg space_style" v-on:click = "showLoalty">Loalty klub</b-button>
                     <b-button pill variant="info" class = "btn btn-info btn-lg space_style" v-on:click = "showComplaints">Žalbe</b-button>
             </span>

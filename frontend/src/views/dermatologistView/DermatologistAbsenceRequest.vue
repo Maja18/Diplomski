@@ -7,7 +7,7 @@
                 <b-button style="margin-left:20px" pill class = "btn btn-info btn-lg space_style" v-on:click = "showProfile">Profil</b-button>
                 <b-button pill class = "btn btn-info btn-lg space_style" v-on:click = "showPatients">Pacijenti</b-button>
                 <b-button pill class = "btn btn-info btn-lg space_style" v-on:click = "showWorkCalendar">Radni kalendar</b-button>
-                <b-button pill class = "btn btn-info btn-lg space_style" v-on:click = "showAbsenceRequest">Odmor</b-button>
+                <b-button :pressed="true" pill class = "btn btn-info btn-lg space_style" v-on:click = "showAbsenceRequest">Odmor</b-button>
                 <b-button pill class = "btn btn-info btn-lg space_style" v-on:click = "showExaminations">Pregledi</b-button>
                 <b-button pill class = "btn btn-info btn-lg space_style" v-on:click = "showNewExamination">Nov pregled</b-button>
             </span>
@@ -158,7 +158,11 @@ export default {
                     'Authorization': 'Bearer ' + token,
                 }})
                 .then(response => {
-                    alert(response.data)
+                    this.$bvToast.toast('Zahtev za odmorom je uspešno poslat.', {
+                    variant: 'info',
+                    title: 'INFO',
+                    solid: true
+                    })
                         console.log(response);
                 })
                 .catch(response => {

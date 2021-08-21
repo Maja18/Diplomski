@@ -13,7 +13,7 @@
                     </b-dropdown>
                     <b-button pill variant="info" class = "btn btn-info btn-lg space_style" v-on:click = "showDrugManipulation">Lekovi</b-button>
                     <b-button pill variant="info" class = "btn btn-info btn-lg space_style" v-on:click = "showLoalty">Loalty klub</b-button>
-                    <b-button pill variant="info" class = "btn btn-info btn-lg space_style" v-on:click = "showComplaints">Žalbe</b-button>
+                    <b-button :pressed="true" pill variant="info" class = "btn btn-info btn-lg space_style" v-on:click = "showComplaints">Žalbe</b-button>
             </span>
              <span  style="float:right;margin:15px">
              <b-button pill class = "btn btn-info btn-lg space_style" v-on:click = "logOut">

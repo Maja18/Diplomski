@@ -8,7 +8,7 @@
                 <b-button pill class = "btn btn-info btn-lg space_style" v-on:click = "showPatients">Pacijenti</b-button>
                 <b-button pill class = "btn btn-info btn-lg space_style" v-on:click = "showWorkCalendar">Radni kalendar</b-button>
                 <b-button pill class = "btn btn-info btn-lg space_style" v-on:click = "showAbsenceRequest">Odmor</b-button>
-                <b-button pill class = "btn btn-info btn-lg space_style" v-on:click = "showExaminations">Pregledi</b-button>
+                <b-button :pressed="true" pill class = "btn btn-info btn-lg space_style" v-on:click = "showExaminations">Pregledi</b-button>
                 <b-button pill class = "btn btn-info btn-lg space_style" v-on:click = "showNewExamination">Nov pregled</b-button>
             </span>
             <span  style="float:right;margin:15px">
@@ -337,7 +337,7 @@ export default {
                 .then(response => {
                     alert(response.data);
                     this.selected = 0;
-                    this.$bvToast.toast('The patients absence was registered.', {
+                    this.$bvToast.toast('Nedolazak pacijenta je zabeležen.', {
                     variant: 'warning',
                     title: 'INFO',
                     solid: true
@@ -424,9 +424,9 @@ export default {
              }
             }).then(response => {
                 this.isDrugChecked = response.data;
-                this.$bvToast.toast('The checked drug availibility is '+response.data+' .', {
+                this.$bvToast.toast('Dostupnost leka je '+response.data+' .', {
                     variant: 'info',
-                    title: 'Check drug availability',
+                    title: 'Dostupnost leka',
                     solid: true
                     })
             }).catch(res => {

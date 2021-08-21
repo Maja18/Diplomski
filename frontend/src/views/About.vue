@@ -33,7 +33,7 @@
       </b-card-text>
     </b-card>
      <h3 style=" margin-top:20px">FILOZOFIJA 5 ČULA - 5 VREDNOSTI BENU BRENDA</h3>
-    <b-card img-src="https://images1-fabric.practo.com/practices/1186661/dr-v-p-singh-clinic-noida-5ad6d94d62648.jpg" img-alt="Card image" img-left  class="text-left" style="height:690px;">
+    <b-card img-src="https://lh3.googleusercontent.com/proxy/iHkO_xJ1qNIFaUxNNKPa8mO9XUYFk8icrEoHP2hlX2aZvplcEV4enTQTayCMwhc4mPYWQBs-uGgLxg1i6robOvu4tG2uv5P7OzxnbhZq0_G0Ag" img-left img-height="450px" class="text-left" style="height:690px;">
       <b-card-text>
         <p>Filozofija 5 vrednosti BENU brenda čini suštinu naše farmaceutske usluge. Baš kao što našim navikama upravlja 5 naših čula, 5 vrednosti BENU brenda rukovode našom uslugom.
         </p>

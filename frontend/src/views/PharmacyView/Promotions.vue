@@ -2,14 +2,14 @@
      <div id="promotions">
         
          <!-- PHARMACIES -->
-                <b-dropdown text="Select pharmacy" variant="outline-info" class="dropdown_style" id="dropdown-divider">
+                <b-dropdown style="margin-top:20px" text="Apoteka" variant="outline-info" class="dropdown_style" id="dropdown-divider">
                             <b-dropdown-item  
                             v-for="pharm in pharmacies" v-bind:key="pharm.id" :value="pharm.id"
                             v-on:click = "showPromotions($event,pharm)">
                                 {{ pharm.name}}
                              </b-dropdown-item>
                     </b-dropdown>
-                    <p class="ml-n mt-6 strong chosen"> <b>Selected pharmacy: {{ selectedPharmacyName}}</b></p>
+                    <p class="ml-n mt-6 strong chosen" style="margin-top:4px"> Izabrana apoteka : {{ selectedPharmacyName}}</p>
         <!-- table -->
          <div style = "background-color:#white; margin: auto; width: 60%;border: 1px solid black;padding: 10px;margin-top:45px;">
                <div class="row">

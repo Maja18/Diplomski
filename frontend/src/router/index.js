@@ -44,6 +44,7 @@ import BodyCare from '../views/PharmacyView/BodyCare.vue'
 import Vitamins from '../views/PharmacyView/Vitamins.vue'
 import DrugAdvices from '../views/PharmacyView/DrugAdvices.vue'
 import ProfileInfo from '../views/PatientView/ProfileInfo.vue'
+import Pharmacies from '../views/PharmacyView/Pharmacies.vue'
 
 Vue.use(BootstrapVue)
 Vue.use(VueRouter)
@@ -273,6 +274,11 @@ const routes = [
     path: '/profileInfo',
     name: 'ProfileInfo',
     component: ProfileInfo
+  },
+  {
+    path: '/pharmacies',
+    name: 'Pharmacies',
+    component: Pharmacies
   }
 ]
 
