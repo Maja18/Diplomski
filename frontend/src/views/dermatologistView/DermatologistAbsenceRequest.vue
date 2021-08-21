@@ -2,7 +2,7 @@
     <div id="dermatologistAbsenceRequest">
         <div class="homepage_style ">
            <span style="float: left; margin: 15px">
-                <img class="image_style space_style" style="width: 170px; height: 50px; left:10px;"
+                <img @click="proba" class="image_style space_style" style="width: 170px; height: 50px; left:10px;"
                 src="@/images/benu.png">
                 <b-button style="margin-left:20px" pill class = "btn btn-info btn-lg space_style" v-on:click = "showProfile">Profil</b-button>
                 <b-button pill class = "btn btn-info btn-lg space_style" v-on:click = "showPatients">Pacijenti</b-button>
@@ -17,7 +17,7 @@
             </b-button>
             </span>
                <b-card 
-                style=" background: #e6f9fc; 
+                style=" background: white; 
                 position: fixed;
                 top: 9.5%;
                 width: 100%;
@@ -125,6 +125,9 @@ export default {
         },
         showNewExamination: function(){
             window.location.href = "/dermatologistNewExamination";
+        },
+         proba:function(){
+             window.location.href = "/";
         },
         logOut : function(){
             localStorage.removeItem('token');

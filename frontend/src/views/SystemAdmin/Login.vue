@@ -155,7 +155,7 @@ export default {
                                     this.$refs['my-modal'].show();
                                 }
                                 else {
-                                    window.location.href = '/pharmacistHomePage';
+                                    window.location.href = '/pharmacistProfile';
                                 }
                                
                             else alert("Error has occured."); 
@@ -205,7 +205,7 @@ export default {
                     else if(this.authority==="ROLE_PHARMACY_ADMIN")
                         window.location.href = '/pharmacyAdminProfile';   
                     else if(this.authority==="ROLE_PHARMACIST")
-                         window.location.href = '/pharmacistHomepage';
+                         window.location.href = '/pharmacistProfile';
                     else alert("Error has occured."); 
                 }).catch(res => {
                     alert(res.response.data.message);

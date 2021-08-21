@@ -2,10 +2,10 @@
     <div id="patientProfile">
         <div class="homepage_style ">
             <span style="float: left; margin: 15px;">
-                <img class="image_style space_style" style="width: 170px; height: 50px; left:10px;"
+                <img @click="proba" class="image_style space_style" style="width: 170px; height: 50px; left:10px;"
                 src="@/images/benu.png">
-                  <b-button pill  style="margin-left:30px" class = "btn btn-info btn-lg space_style" v-on:click = "showPharmacyPage">Pharmacy home page</b-button>
-                    <b-button pill class = "btn btn-info btn-lg space_style" v-on:click = "showProfile">Profil</b-button>
+                
+                    <b-button style="margin-left:30px" pill class = "btn btn-info btn-lg space_style" v-on:click = "showProfile">Profil</b-button>
                     <b-button pill class = "btn btn-info btn-lg space_style"  v-on:click = "showSubsribedPharmacies">Pretplaćene apoteke</b-button>
                     <b-button pill class = "btn btn-info btn-lg space_style" v-on:click = "writeComplaint">Žalbe</b-button>
                     <b-button pill class = "btn btn-info btn-lg space_style" v-on:click = "showEPrescription">ERecept</b-button>
@@ -213,6 +213,9 @@ export default {
         },
          giveUp2:function(){
           this.$refs['modal-ref2'].hide();
+        },
+         proba:function(){
+             window.location.href = "/";
         },
         update : function(){
             let token = localStorage.getItem('token').substring(1, localStorage.getItem('token').length-1);

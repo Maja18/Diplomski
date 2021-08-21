@@ -2,45 +2,48 @@
     <div id="pharmacistConsalting">
         <div class="homepage_style ">
            <span style="float: left; margin: 15px;">
-                <img class="image_style space_style" style="width: 50px; height: 50px; margin-right:10px;" src="@/images/natural-medicine.png">
-                <button class = "btn btn-info btn-lg space_style" v-on:click = "showHomepage">Home</button>
-                <button class = "btn btn-info btn-lg space_style" v-on:click = "showProfile">Profile</button>
-                <button class = "btn btn-info btn-lg space_style" v-on:click = "showPatients">My patients</button>
-                <button class = "btn btn-info btn-lg space_style" v-on:click = "showWorkCalendar">Work calendar</button>
-                <button class = "btn btn-info btn-lg space_style" v-on:click = "showAbsenceRequest">Create a vacation</button>
-                <button class = "btn btn-info btn-lg space_style" v-on:click = "showConsalting">Consaltings</button>
-                <button class = "btn btn-info btn-lg space_style" v-on:click = "showNewConsalting">Schedule new consalting</button>
-                <button class = "btn btn-info btn-lg space_style" v-on:click = "showDispensingDrugs">Dispensing drugs</button>
+                <img @click="proba" class="image_style space_style" style="width: 170px; height: 50px; left:10px;"
+                src="@/images/benu.png">
+                <b-button style="margin-left:20px" pill variant="info" class = "btn btn-info btn-lg space_style" v-on:click = "showProfile">Profil</b-button>
+                <b-button pill variant="info" class = "btn btn-info btn-lg space_style" v-on:click = "showPatients">Pacijenti</b-button>
+                <b-button pill variant="info" class = "btn btn-info btn-lg space_style" v-on:click = "showWorkCalendar">Radni kalendar</b-button>
+                <b-button pill variant="info" class = "btn btn-info btn-lg space_style" v-on:click = "showAbsenceRequest">Odmor</b-button>
+                <b-button pill variant="info" class = "btn btn-info btn-lg space_style" v-on:click = "showConsalting">Savetovanja</b-button>
+                <b-button pill variant="info" class = "btn btn-info btn-lg space_style" v-on:click = "showNewConsalting">Novo savetovanje</b-button>
+               
             </span>
             <span  style="float:right;margin:15px">
-                <button class = "btn btn-lg btn-light" style="margin-right:20px;" v-on:click = "logOut">Log Out</button>
+             <b-button pill class = "btn btn-info btn-lg space_style" v-on:click = "logOut">
+                     <b-icon icon="power"   aria-hidden="true"></b-icon> Odjavi se
+            </b-button>
             </span>
         </div>
         <div>
-            <div style="left:0">
-                <h4 class="text-left text_postion">Please choose one of the options to continue:</h4>
+           <div  style="left:0;margin-left:33px;margin-top:20px">
+                <h4 class="text-left text_postion">Molim vas izaberite jednu od opcija da nastavite:</h4>
                 <b-radio-group v-model="selected"  class="text-left text_postion">
-                    <b-radio value="1" >Start counseling</b-radio>
-                    <b-radio value="2" >Patient didn't come to counseling!</b-radio>
+                    <b-radio value="1" >Započni pregled</b-radio>
+                    <b-radio value="2" >Pacijent se nije pojavio na pregledu!</b-radio>
                 </b-radio-group>
             </div>
-            <b-tabs v-if="counselingID > 0" card>
-                <b-tab title="Begin with examination" v-if="selected == 1" @click="getPatientValidDrugs">
+            <b-tabs style="width:1400px; margin-left:50px" v-if="counselingID > 0" card>
+                <b-tab title="Počni sa savetovanjem" v-if="selected == 1" @click="getPatientValidDrugs">
                     <b-row class="mt-2">
                         <b-col sm="3">
-                        <h3 for="textarea-large" class="text-left" style="font-size:18px">Enter information about examination:</h3>
+                        <h3 for="textarea-large" class="text-left" style="font-size:18px">Unesite informacije o pregledu:</h3>
                         
                         </b-col>
                         <b-col sm="12">
                         <b-form-textarea
+                        style="margin-top:10px"
                             id="textarea-large"
                             size="lg"
                             v-model="counselingInfo"
-                            placeholder="type here.."
+                            placeholder="kucajte ovde..."
                         ></b-form-textarea>
                         </b-col>
                     </b-row>
-                    <table v-if="isDrugAvailable==true" class="table table-striped" style="width:100%; border-bottom:solid;">
+                    <table v-if="isDrugAvailable==true" class="table table-striped" style="width:100%; border-bottom:solid;margin-top:20px">
                             <thead class="thead-light">
                                 <tr>
                                 <th scope="col" 
@@ -54,12 +57,12 @@
                                 <td>{{drug.name}}</td>
                                 <td>{{drug.type}}</td>
                                 <td>{{drug.drugForm}}</td>
-                                <b-button 
+                                <b-button pill
                                 variant="info" 
                                 style="margin-top:1%;" 
                                 v-on:click="getDrugSpecification(drug.id)" 
                                 @click="selectedDrug = drug, isDrugChecked= false"
-                                v-b-modal.modal-1>drug specification</b-button>
+                                v-b-modal.modal-1>specifikacija leka</b-button>
                                 </tr>
                             </tbody>
                         </table>
@@ -91,15 +94,15 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <b-modal ref="modal-ref" id="modal-1" title="Drug specification" hide-footer>
-                          <div class="drug_info">
-                            <h4>Drug : <u>{{selectedDrug.name}}</u></h4>
-                            <h4>Possible contra indication : <u>{{drugSpecification.contraIndications}}</u></h4>
-                            <h4>Composition : <u>{{drugSpecification.composition}}</u></h4>
-                            <h4>Manufacturer : <u>{{drugSpecification.manufacturer}}</u></h4>
-                            <h4>Recommended terapy duration : <u>{{drugSpecification.therapyDuration}} days</u></h4>
+                        <b-modal ref="modal-ref" id="modal-1" title="Specifikacija leka" hide-footer>
+                           <div class="drug_info">
+                            <h4>Lek : <u>{{selectedDrug.name}}</u></h4>
+                            <h4>Moguće kontraindikacije : <u>{{drugSpecification.contraIndications}}</u></h4>
+                            <h4>Kompozicija : <u>{{drugSpecification.composition}}</u></h4>
+                            <h4>Proizvođač : <u>{{drugSpecification.manufacturer}}</u></h4>
+                            <h4>Preporučena dužina terapije : <u>{{drugSpecification.therapyDuration}} dana</u></h4>
                         </div>
-                        <h4 style="margin-top:20px;">Length of therapy: </h4>
+                        <h4 style="margin-top:20px;">Dužina terapije: </h4>
                         <b-form-input 
                         type="number" 
                         class="object_space" 
@@ -108,7 +111,7 @@
                         placeholder="terapy duration"
                         style="margin-top:10px; font-size:16px;">
                         </b-form-input>
-                        <h4 style="margin-top:20px;">Daily amount of therapy: </h4>
+                        <h4 style="margin-top:20px;">Dnevna doza terapije: </h4>
                         <b-form-input 
                         type="number" 
                         class="object_space" 
@@ -117,41 +120,41 @@
                         placeholder="terapy duration"
                         style="margin-top:10px; font-size:16px;">
                         </b-form-input>
-                        <b-row style="float: left; margin: 5px;">
-                            <b-button
+                         <b-row style="float: left; margin: 5px;">
+                            <b-button pill variant="info"
                             class="btn btn-info btn-lg space_style" 
-                            style="background-color:#17a2b8; margin-right:5px; width:125px; height:50px;" 
+                            style="background-color:#17a2b8; margin-right:5px; width:170px; height:50px;margin-top:130px" 
                             v-on:click = "cancel">
-                                Cancel
+                                Odustani
                             </b-button>
-                            <b-button
+                            <b-button pill variant="info"
                             class="btn btn-info btn-lg space_style" 
-                            style="background-color:#17a2b8; margin-bottom:10px;width:320px;height:50px;" 
-                            v-on:click="checkDrugAvailability">
-                                Check drug availability
+                            style="background-color:#17a2b8; margin-top:20px;width:210px;height:80px; margin-left:-177px" 
+                            @click="checkDrugAvailability()">
+                                Proveri dostupnost leka
                             </b-button>
                         </b-row>
-                            <b-button 
+                            <b-button pill variant="info"
                             class="btn btn-info btn-lg space_style" 
-                            style="background-color:#17a2b8; width:460px;height:50px;"
+                            style="background-color:#17a2b8; width:170px;height:50px; margin-top:136px ; margin-left:-15px"
                             v-if="isDrugChecked == true"
                             v-on:click = "prescribe">
-                                Prescribe drug
+                                Prepiši lek
                             </b-button>
-                            <b-button 
+                            <b-button pill variant="info"
                             class="btn btn-info btn-lg space_style" 
-                            style="background-color:#17a2b8; width:460px;height:50px;"
+                            style="background-color:#17a2b8; width:210px;height:80px; margin-left:255px;margin-top:-279px"
                             v-if="isDrugChecked == false"
                             @click="getAlternativeDrugs(); cancel()">
-                                Check for alternative drugs
+                                Proveri alternativne lekove
                             </b-button>
                         </b-modal>
-                        <b-button 
+                        <b-button pill variant="info"
                             v-if="updated == false"
                             class="btn btn-info btn-lg space_style" 
                             style="background-color:#17a2b8; width:460px;height:50px;"
                             v-on:click = "updateCounseling">
-                                Finish counseling
+                                Završi pregled
                         </b-button>
                         <b-button v-if="updated == true"
                             class="btn btn-info btn-lg space_style" 
@@ -161,9 +164,9 @@
                         </b-button>
                 </b-tab>
                 <b-tab title="Unsustainable counsaling" v-else-if="selected == 2" >
-                    <h3  class="text-left"
+                   <h4  class="text-left"
                     style="margin-left:1%;
-                    margin-top:1%;">Please, confirm once more:</h3>
+                    margin-top:1%;">Molim vas potvrdite još jednom:</h4>
                     <b-form-checkbox
                     id="checkbox-1"
                     v-model="confirmation"
@@ -175,21 +178,21 @@
                     style="margin-left:28%;
                     margin-top:-2.5%;"
                     >
-                    I confirm.
+                    Potvrdi
                     </b-form-checkbox>
                     <button 
                     class="button"
                     style="
-                    margin-top:0%;
+                    margin-top:3%;
                     width: 20%;"
-                    v-on:click = "patientDidntShow"> finish counseling</button>
+                    v-on:click = "patientDidntShow"> Završi pregled</button>
                     
                 </b-tab>
                 <b-tab title="Please choose one of the options!" v-else disabled></b-tab>
             </b-tabs>
             <div v-else> 
-                <h3>Scheduled counselings</h3>
-                <table class="table table-striped" style="width:100%;">
+               <h3 style="margin-top:20px">Zakazana savetovanja</h3>
+                <table class="table table-striped" style="width:90%;margin-top:30px;margin-left:71px">
                     <thead class="thead-light">
                         <tr>
                             <th scope="col" 
@@ -205,7 +208,7 @@
                         <td>{{c.patientInfo}}</td>
                         <td>{{format_date(c.startDate)}}</td>
                         <td>{{c.startTimeText}}</td>
-                        <b-button variant="info" style="margin-top:1%;" v-on:click="startConsalting(c.counselingId)">start examination</b-button>
+                        <b-button variant="info" pill style="margin-top:1%;" v-on:click="startConsalting(c.counselingId)">započni savetovanje</b-button>
                         </tr>
                     </tbody>
                 </table>
@@ -228,16 +231,16 @@ export default {
         confirmation: 0,
         examinationInfo: "",
         fields: [
-          { key: 'drugName', label: 'Drug name' },
-          { key: 'type', label: 'Drug type' },
-          { key: 'form', label: 'Drug form' },
-          {label: 'Open specification'}
+          { key: 'drugName', label: 'Ime leka' },
+          { key: 'type', label: 'Tip leka' },
+          { key: 'form', label: 'Forma leka' },
+          {label: ''}
         ],
         fields2: [
-          { key: 'patientInfo', label: 'Patient' },
-          { key: 'startDate', label: 'Examination start date' },
-          { key: 'startTime', label: 'Examination start time' },
-          {label: 'Start examination'}
+          { key: 'patientInfo', label: 'Pacijent' },
+          { key: 'startDate', label: 'Početak pregleda' },
+          { key: 'startTime', label: 'Kraj pregleda' },
+          {label: ''}
         ],
         drugs: [],
         drugSpecification: [],
@@ -311,6 +314,9 @@ export default {
         logOut : function(){
             localStorage.removeItem('token');
             window.location.href = "/login";
+        },
+         proba:function(){
+             window.location.href = "/";
         },
         cancel() {
             this.$refs['modal-ref'].hide();
@@ -396,6 +402,7 @@ export default {
              }
             }).then(response => {
                     alert(response.data);
+                     this.$refs['modal-ref'].hide();
             }).catch(res => {
                         alert("Error");
                             console.log(res);
@@ -455,6 +462,7 @@ export default {
             }).then(response => {
                 alert(response.data);
                 this.updated = true;
+                 window.location.href = "/dermatologistExamination/-1";
             }).catch(res => {
                         alert("Error");
                             console.log(res);
@@ -477,7 +485,7 @@ export default {
         left: 0;
         z-index: 999;
         width: 100%;
-        height: 70px;
+        height: 73px;
     }
 
     .space_style{

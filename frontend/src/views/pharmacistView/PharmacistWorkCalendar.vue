@@ -1,20 +1,22 @@
 <template>
     <div id="pharmacistWorkCalendar">
         <div class="homepage_style ">
-           <span style="float: left; margin: 15px;">
-                <img class="image_style space_style" style="width: 50px; height: 50px; margin-right:10px;" src="@/images/natural-medicine.png">
-                <button class = "btn btn-info btn-lg space_style" v-on:click = "showHomepage">Home</button>
-                <button class = "btn btn-info btn-lg space_style" v-on:click = "showProfile">Profile</button>
-                <button class = "btn btn-info btn-lg space_style" v-on:click = "showPatients">My patients</button>
-                <button class = "btn btn-info btn-lg space_style" v-on:click = "showWorkCalendar">Work calendar</button>
-                <button class = "btn btn-info btn-lg space_style" v-on:click = "showAbsenceRequest">Create a vacation</button>
-                <button class = "btn btn-info btn-lg space_style" v-on:click = "showConsalting">Consaltings</button>
-                <button class = "btn btn-info btn-lg space_style" v-on:click = "showNewConsalting">Schedule new consalting</button>
-                <button class = "btn btn-info btn-lg space_style" v-on:click = "showDispensingDrugs">Dispensing drugs</button>
+          <span style="float: left; margin: 15px;">
+                <img @click="proba" class="image_style space_style" style="width: 170px; height: 50px; left:10px;"
+                src="@/images/benu.png">
+                <b-button style="margin-left:20px" pill variant="info" class = "btn btn-info btn-lg space_style" v-on:click = "showProfile">Profil</b-button>
+                <b-button pill variant="info" class = "btn btn-info btn-lg space_style" v-on:click = "showPatients">Pacijenti</b-button>
+                <b-button pill variant="info" class = "btn btn-info btn-lg space_style" v-on:click = "showWorkCalendar">Radni kalendar</b-button>
+                <b-button pill variant="info" class = "btn btn-info btn-lg space_style" v-on:click = "showAbsenceRequest">Odmor</b-button>
+                <b-button pill variant="info" class = "btn btn-info btn-lg space_style" v-on:click = "showConsalting">Savetovanja</b-button>
+                <b-button pill variant="info" class = "btn btn-info btn-lg space_style" v-on:click = "showNewConsalting">Novo savetovanje</b-button>
+               
             </span>
-              <span  style="float:right;margin:15px">
-                    <button class = "btn btn-lg btn-light" style="margin-right:20px;" v-on:click = "logOut">Log Out</button>
-                </span>
+            <span  style="float:right;margin:15px">
+             <b-button pill class = "btn btn-info btn-lg space_style" v-on:click = "logOut">
+                     <b-icon icon="power"   aria-hidden="true"></b-icon> Odjavi se
+            </b-button>
+            </span>
         </div>
 
         <!-- CALENDAR -->
@@ -29,9 +31,9 @@
                 <i>{{ arg.event.title }}</i>
                 </template>
             </FullCalendar>
-            <b-modal ref="my-modal"  hide-footer title= "Counseling info:">
+            <b-modal ref="my-modal"  hide-footer title= "Informacije o savetovanju:">
                 <b-row>
-                <b-col sm="3"> Patient </b-col>
+                <b-col sm="3"> Pacijent: </b-col>
                 <b-col>
                     <h5
                     text-align-center
@@ -42,18 +44,18 @@
                 </b-col>
                 </b-row>
                 <b-row>
-                <b-col sm="3"> Start time </b-col>
+                <b-col sm="3"> Početak: </b-col>
                 <b-col>
                     <h5
                     text-align-center
                     v-bind:style="{ align: 'center', justify: 'center' }"
                     >
-                    {{ format_date(this.startDate) }} at {{ format_time(this.startTime) }}
+                    {{ format_date(this.startDate) }} u {{ format_time(this.startTime) }}
                     </h5>
                 </b-col>
                 </b-row>
                 <b-row>
-                <b-col sm="3"> Duration </b-col>
+                <b-col sm="3"> Trajanje: </b-col>
                 <b-col>
                     <h5
                     text-align-center
@@ -65,19 +67,21 @@
                 </b-row>
                 <b-row>
                 <b-col>
-                    <b-button
+                    <b-button pill
+                     style="color:black; margin-top:30px"
                     class="button_custom"
                     variant="info"
                     @click="hideModal"
-                    >Close</b-button
+                    >Zatvori</b-button
                     >
                 </b-col>
                 <b-col> 
                    <router-link :to="{ name: 'PharmacistConsalting', params: {selectedCounseling: this.counselingId}}" class="search-btn">
-                        <b-button
+                        <b-button pill
+                        style="color:black; margin-top:30px"
                         class="button_custom"
                         variant="info">
-                        Start counseling
+                        Započni savetovanje
                         </b-button>
                     </router-link>
                 </b-col>
@@ -195,6 +199,9 @@ export default {
         showNewConsalting: function(){
             window.location.href = "/pharmacistNewConsalting";
         },
+         proba:function(){
+             window.location.href = "/";
+        },
         logOut : function(){
             localStorage.removeItem('token');
             window.location.href = "/login";
@@ -263,7 +270,7 @@ export default {
         left: 0;
         z-index: 999;
         width: 100%;
-        height: 70px;
+        height: 73px;
     }
 
     .space_style{

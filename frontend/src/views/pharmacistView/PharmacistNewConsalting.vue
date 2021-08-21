@@ -2,22 +2,24 @@
     <div id="pharmacistNewConsalting">
         <div class="homepage_style ">
            <span style="float: left; margin: 15px;">
-                <img class="image_style space_style" style="width: 50px; height: 50px; margin-right:10px;" src="@/images/natural-medicine.png">
-                <button class = "btn btn-info btn-lg space_style" v-on:click = "showHomepage">Home</button>
-                <button class = "btn btn-info btn-lg space_style" v-on:click = "showProfile">Profile</button>
-                <button class = "btn btn-info btn-lg space_style" v-on:click = "showPatients">My patients</button>
-                <button class = "btn btn-info btn-lg space_style" v-on:click = "showWorkCalendar">Work calendar</button>
-                <button class = "btn btn-info btn-lg space_style" v-on:click = "showAbsenceRequest">Create a vacation</button>
-                <button class = "btn btn-info btn-lg space_style" v-on:click = "showConsaltings">Consaltings</button>
-                <button class = "btn btn-info btn-lg space_style" v-on:click = "showNewConsalting">Schedule new consalting</button>
-                <button class = "btn btn-info btn-lg space_style" v-on:click = "showDispensingDrugs">Dispensing drugs</button>
+                <img @click="proba" class="image_style space_style" style="width: 170px; height: 50px; left:10px;"
+                src="@/images/benu.png">
+                <b-button style="margin-left:20px" pill variant="info" class = "btn btn-info btn-lg space_style" v-on:click = "showProfile">Profil</b-button>
+                <b-button pill variant="info" class = "btn btn-info btn-lg space_style" v-on:click = "showPatients">Pacijenti</b-button>
+                <b-button pill variant="info" class = "btn btn-info btn-lg space_style" v-on:click = "showWorkCalendar">Radni kalendar</b-button>
+                <b-button pill variant="info" class = "btn btn-info btn-lg space_style" v-on:click = "showAbsenceRequest">Odmor</b-button>
+                <b-button pill variant="info" class = "btn btn-info btn-lg space_style" v-on:click = "showConsalting">Savetovanja</b-button>
+                <b-button pill variant="info" class = "btn btn-info btn-lg space_style" v-on:click = "showNewConsalting">Novo savetovanje</b-button>
+               
             </span>
             <span  style="float:right;margin:15px">
-                <button class = "btn btn-lg btn-light" style="margin-right:20px;" v-on:click = "logOut">Log Out</button>
+             <b-button pill class = "btn btn-info btn-lg space_style" v-on:click = "logOut">
+                     <b-icon icon="power"   aria-hidden="true"></b-icon> Odjavi se
+            </b-button>
             </span>
         </div>
         <b-card 
-        style=" background: #e6f9fc; 
+        style=" background: white; 
         position: fixed;
         top: 10.5%;
         width: 100%;
@@ -27,26 +29,32 @@
             <div style="position: fixed;
             width:44%;
             height:60%; 
+             margin-left:400px;
+             margin-top:10px;
             border:2px solid #17a2b8; 
             background-color: #ffffff; 
             left:2%;
             top: 18.5%;">
-            <h4 class="ml-n mt-6 strong text_position" style="color: #17a2b8;"><b>Schedule new counseling</b></h4>
+            <h4 class="ml-n mt-6 strong text_position" style="color: #17a2b8;margin-left:180px"><b>Zakažite novo savetovanje</b></h4>
             <div style="position: fixed;
                     top: 18%; 
                     max-width: 100%;
                     left: 50px;
                     height: 400px;
                     width: 40%;
+                   margin-left:400px;
+                   margin-top:10px
                     max-width: 100%;">
-                    <h5 class="ml-n mt-6 strong text-left" style="margin-bottom:8%; margin-top: 2% !important;"><b> Search or chooese patient from list:</b></h5>
+                    <h5 class="ml-n mt-6 strong text-left" style="margin-bottom:8%; margin-top: 2% !important;">
+                         Pretražite ili izaberite pacijenta iz liste:</h5>
                     <input list="my-list-id" v-model="selectedPatient" 
                     style=" width: 14%;
                     border: 3px solid #17a2b8;
+                     margin-left:400px;
                     position: fixed;
                     left: 3.5%;
                     top: 22%;
-                    margin-top: 1% !important;
+                    margin-top: 2% !important;
                     margin-bottom: 1% !important;
                     height: 5%;" 
                     placeholder="      Enter patient">
@@ -55,14 +63,14 @@
                             {{ patient.name }} {{patient.surname}} | {{patient.email}} 
                         </option>
                     </datalist>
-                    <h5 class="ml-n mt-6 strong text-left" style="margin-top:10%"><b>Select date of counseling</b></h5>
-                    <b-form-input type="date" class="object_space" v-model="startDate" filled placeholder="Enter date of counseling"></b-form-input>
-                    <h5 class="ml-n mt-6 strong text-left" ><b>Select start time of counseling</b></h5>
+                    <h5 class="ml-n mt-6 strong text-left" style="margin-top:10%">Izaberite datum savetovanja</h5>
+                    <b-form-input type="date" class="object_space" v-model="startDate" filled placeholder="Izaberite datum savetovanja"></b-form-input>
+                    <h5 class="ml-n mt-6 strong text-left" >Izaberite vreme početka savetovanja</h5>
                     <b-form-input type="time" class="object_space" v-model="startTime" filled placeholder="Start time of counseling"></b-form-input>
-                    <h5 class="ml-n mt-6 strong text-left"><b>Select end time of counseling</b></h5>
+                    <h5 class="ml-n mt-6 strong text-left">Izaberite vreme kraja savetovanja</h5>
                     <b-form-input type="time" class="object_space" v-model="endTime" filled placeholder="End time of counseling"></b-form-input>
                     
-                    <b-button class="btn btn-info btn-lg space_style object_space" style="background-color:#17a2b8; width:18cm;" v-on:click = "scheduleCounseling">Schedule</b-button>
+                    <b-button pill variant="info" class="btn btn-info btn-lg space_style object_space" style="width:170px;margin-top:3% !important; margin-left:50px" v-on:click = "scheduleCounseling">Zakaži</b-button>
             </div>
         </div>
         </b-card>
@@ -121,6 +129,9 @@ export default {
             localStorage.removeItem('token');
             window.location.href = "/login";
         }, 
+         proba:function(){
+             window.location.href = "/";
+        },
         showDispensingDrugs : function(){
             window.location.href = "/pharmacistDispensingDrugs";
         },
@@ -179,7 +190,7 @@ export default {
         left: 0;
         z-index: 999;
         width: 100%;
-        height: 70px;
+        height: 73px;
     }
 
     .space_style{

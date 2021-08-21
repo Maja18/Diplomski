@@ -3,18 +3,20 @@
         <!-- Navigation bar -->
         <div class="homepage_style "  >
             <span style="float: left; margin: 15px;">
-                <img class="image_style space_style" style="width: 50px; height: 50px; margin-right:10px;" src="@/images/natural-medicine.png">
-                <button class = "btn btn-info btn-lg space_style" v-on:click = "showHomepage">Home</button>
-                <button class = "btn btn-info btn-lg space_style" v-on:click = "showProfile">Profile</button>
-                <button class = "btn btn-info btn-lg space_style" v-on:click = "showPatients">My patients</button>
-                <button class = "btn btn-info btn-lg space_style" v-on:click = "showWorkCalendar">Work calendar</button>
-                <button class = "btn btn-info btn-lg space_style" v-on:click = "showAbsenceRequest">Create a vacation</button>
-                <button class = "btn btn-info btn-lg space_style" v-on:click = "showConsalting">Consaltings</button>
-                <button class = "btn btn-info btn-lg space_style" v-on:click = "showNewConsalting">Schedule new consalting</button>
-                <button class = "btn btn-info btn-lg space_style" v-on:click = "showDispensingDrugs">Dispensing drugs</button>
+                <img @click="proba" class="image_style space_style" style="width: 170px; height: 50px; left:10px;"
+                src="@/images/benu.png">
+                <b-button style="margin-left:20px" pill variant="info" class = "btn btn-info btn-lg space_style" v-on:click = "showProfile">Profil</b-button>
+                <b-button pill variant="info" class = "btn btn-info btn-lg space_style" v-on:click = "showPatients">Pacijenti</b-button>
+                <b-button pill variant="info" class = "btn btn-info btn-lg space_style" v-on:click = "showWorkCalendar">Radni kalendar</b-button>
+                <b-button pill variant="info" class = "btn btn-info btn-lg space_style" v-on:click = "showAbsenceRequest">Odmor</b-button>
+                <b-button pill variant="info" class = "btn btn-info btn-lg space_style" v-on:click = "showConsalting">Savetovanja</b-button>
+                <b-button pill variant="info" class = "btn btn-info btn-lg space_style" v-on:click = "showNewConsalting">Novo savetovanje</b-button>
+               
             </span>
             <span  style="float:right;margin:15px">
-                <button class = "btn btn-lg btn-light" style="margin-right:20px;" v-on:click = "logOut">Log Out</button>
+             <b-button pill class = "btn btn-info btn-lg space_style" v-on:click = "logOut">
+                     <b-icon icon="power"   aria-hidden="true"></b-icon> Odjavi se
+            </b-button>
             </span>
         </div>
         <!-- Navigation bar bg-white mt-5 mb-5-->
@@ -23,7 +25,7 @@
             <div class="card"  >
                 <div class="profile-img">
                     <img class="img-responsive" src="@/images/nature.jpg" style=" height:150px;" width="100%" />
-                    <img class="img-circle img-responsive rounded-circle"  src="@/images/dermatologist.png" style="width:120px; height:120px;"  />
+                    <img class="img-circle img-responsive rounded-circle"  src="https://thumbs.dreamstime.com/z/portrait-male-pharmacist-pharmacy-16753524.jpg" style="width:120px; height:120px;"  />
                 </div>
                 <div class=" d-inline-block " style=" height:100%; background-color: #ced2d3;">
                     <h4 style = "position:left; left:60px; top:2px; background-color:#ebf0fa;"><b>dr {{pharmacist.name}}  {{pharmacist.surname}} </b></h4>
@@ -31,17 +33,17 @@
                     <div class="col-md-8 ">
                     <div class="card mb-3 " style = "position:right; left:90px; top:2px; background-color:#ebf0fa;">
                     <div class="card-body" style="background-color: #ebf0fa;">
-                        <h4 class ="text-justify top-buffer"> Name:   {{pharmacist.name}} </h4>
+                        <h4 class ="text-justify top-buffer"> Ime:   {{pharmacist.name}} </h4>
                         <hr>
-                        <h4 class ="text-justify top-buffer"> Surname:   {{pharmacist.surname}} </h4>
+                        <h4 class ="text-justify top-buffer"> Prezime:   {{pharmacist.surname}} </h4>
                         <hr>
                         <h4 class ="text-justify top-buffer"> Email:   {{pharmacist.email}} </h4>
                         <hr>
-                        <h4 class ="text-justify top-buffer"> Contact:   {{pharmacist.contact}}</h4>
+                        <h4 class ="text-justify top-buffer"> Kontakt:   {{pharmacist.contact}}</h4>
                         <hr>
-                        <h4 class ="text-justify top-buffer"> Address:   {{pharmacist.address.street}}, {{pharmacist.address.number}} </h4>
+                        <h4 class ="text-justify top-buffer"> Adresa:   {{pharmacist.address.street}}, {{pharmacist.address.number}} </h4>
                         <hr>
-                        <h4 class ="text-justify top-buffer"> City:  {{pharmacist.address.town}}, {{pharmacist.address.country}} </h4>
+                        <h4 class ="text-justify top-buffer"> Grad:  {{pharmacist.address.town}}, {{pharmacist.address.country}} </h4>
                         
                 </div>
               </div>
@@ -50,49 +52,49 @@
                          <!-- <div class="mt-5 text-center top-buffer"><button class="btn btn-info btn-lg space_style" style="background-color:#003d66;"  v-on:click = "editProfile">Edit profile</button></div>-->  
                         <!-- Modal --> 
                         <div class="mt-5 text-center top-buffer">
-                            <b-button  class="btn btn-info btn-lg space_style" style="background-color:#003d66;" v-b-modal.modal-2>Edit password</b-button>
-                            <b-button  class="btn btn-info btn-lg space_style"  style="background-color:#003d66;" v-b-modal.modal-1>Edit profile info</b-button>
-                            <b-modal ref="modal-ref" id="modal-1" title="Edit profile info" hide-footer>
+                            <b-button pill class="btn btn-info btn-lg space_style" variant="info" style="width:170px ; margin-left:0px" v-b-modal.modal-2>Izmeni šifru</b-button>
+                            <b-button  pill class="btn btn-info btn-lg space_style" variant="info" style="width:170px; margin-left:30px" v-b-modal.modal-1>Izmeni podatke</b-button>
+                            <b-modal ref="modal-ref" id="modal-1" title="Izmena ličnih podataka" hide-footer>
                                 <div>
-                                    <h5 class ="text-justify top-buffer"> Name:
+                                    <h5 class ="text-justify top-buffer"> Ime:
                                         <b-form-input v-model="pharmacist.name" label="First Name" filled placeholder="Enter your name"></b-form-input>
                                     </h5>
-                                    <h5 class ="text-justify top-buffer"> Last Name:
+                                    <h5 class ="text-justify top-buffer"> Prezime:
                                         <b-form-input v-model="pharmacist.surname" label="Last Name" filled placeholder="Enter your name"></b-form-input>
                                     </h5>
                                     <h5 class ="text-justify top-buffer"> Email:
                                         <b-form-input v-model="pharmacist.email" label="Email" disabled></b-form-input>
                                     </h5>
-                                    <h5 class ="text-justify top-buffer"> Contact:
+                                    <h5 class ="text-justify top-buffer"> Kontakt:
                                         <b-form-input v-model="pharmacist.contact" label="Contact"></b-form-input>
                                     </h5>
-                                    <h5 class ="text-justify top-buffer"> Street:
+                                    <h5 class ="text-justify top-buffer"> Ulica:
                                         <b-form-input v-model="pharmacist.address.street" label="Street" filled placeholder="Enter your street name"></b-form-input>
                                     </h5>
-                                    <h5 class ="text-justify top-buffer"> Street Number:
+                                    <h5 class ="text-justify top-buffer"> Broj ulice:
                                         <b-form-input v-model="pharmacist.address.number" label="Street Number" filled placeholder="Enter your street number"></b-form-input>
                                     </h5>
-                                    <h5 class ="text-justify top-buffer"> City:
+                                    <h5 class ="text-justify top-buffer"> Grad:
                                         <b-form-input v-model="pharmacist.address.town" label="City" filled placeholder="Enter the city name"></b-form-input>
                                     </h5>
-                                    <h5 class ="text-justify top-buffer"> Country:
+                                    <h5 class ="text-justify top-buffer"> Država:
                                         <b-form-input v-model="pharmacist.address.country" label="Country" filled placeholder="Enter the country name"></b-form-input>
                                     </h5>
                                     <b-row style="float: left; margin: 30px;">
-                                        <b-button class="btn btn-info btn-lg space_style" style="background-color:#003d66; width:5cm;" v-on:click = "cancel">Cancel</b-button>
-                                        <b-button class="btn btn-info btn-lg space_style" style="background-color:#003d66; width:5cm;" v-on:click = "update">Update</b-button>
+                                       <b-button pill variant="info" class="btn btn-info btn-lg space_style" style=" margin-left:30px;width:4cm;" v-on:click = "cancel">Odustani</b-button>
+                                        <b-button pill variant="info" class="btn btn-info btn-lg space_style" style="margin-left:30px;width:4cm;" v-on:click = "update">Potvrdi</b-button>
                                     </b-row>
                                 </div>
                             </b-modal>
-                            <b-modal ref="modal-ref2" id="modal-2" title="Edit profile info" hide-footer>
+                            <b-modal ref="modal-ref2" id="modal-2" title="Izmena šifre" hide-footer>
                                 <div>
                                     <h5 class ="text-justify top-buffer">
                                         <div class="mb-4">
-                                        <label for="password">Current Password</label>
+                                        <label for="password"> Trenutna šifra</label>
                                         <VuePassword
                                             v-model="pharmacist.currentPassword"
                                             id="password1"
-                                            placeholder="Enter your current password"
+                                            placeholder="me123"
                                             :badge="false" 
                                             :toggle="true"
                                         />
@@ -100,28 +102,28 @@
                                     </h5>
                                     <h5 class ="text-justify top-buffer">
                                         <div class="mb-4">
-                                        <label for="password">New Password:</label>
+                                        <label for="password">Nova šifra:</label>
                                         <VuePassword
                                             v-model="pharmacist.newPassword"
                                             id="password1"
-                                            placeholder="Enter your current password"
+                                            placeholder="1234"
                                            
                                         />
                                         </div>
                                     </h5>
                                     <h5 class ="text-justify top-buffer">
                                         <div class="mb-4">
-                                        <label for="password">Repeat New Password:</label>
+                                        <label for="password">Potvrdite novu šifru:</label>
                                         <VuePassword
                                             v-model="pharmacist.repeatNewPassword"
                                             id="password1"
-                                            placeholder="Enter your current password"
+                                            placeholder="1234"
                                         />
                                         </div>
                                     </h5>
                                     <b-row style="float: left; margin: 30px;">
-                                        <b-button class="btn btn-info btn-lg space_style" style="background-color:#003d66; width:5cm;" v-on:click = "cancelPassword">Cancel</b-button>
-                                        <b-button class="btn btn-info btn-lg space_style" style="background-color:#003d66; width:5cm;" v-on:click = "updatePassword">Update</b-button>
+                                        <b-button pill variant="info" class= "btn btn-info btn-lg space_style" style=" margin-left:33px; width:4cm;" v-on:click = "cancelPassword">Odustani</b-button>
+                                        <b-button pill variant="info" class="btn btn-info btn-lg space_style" style="margin-left:30px; width:4cm;" v-on:click = "updatePassword">Izmeni</b-button>
                                     </b-row>
                                 </div>
                             </b-modal>
@@ -197,6 +199,9 @@ data() {
         logOut : function(){
             localStorage.removeItem('token');
             window.location.href = "/login";
+        },
+        proba:function(){
+             window.location.href = "/";
         },
         cancel() {
             this.$refs['modal-ref'].hide();
@@ -338,7 +343,7 @@ data() {
         left: 0;
         z-index: 999;
         width: 100%;
-        height: 70px;
+        height: 73px;
     }
     .profile_style{
         position: fixed;

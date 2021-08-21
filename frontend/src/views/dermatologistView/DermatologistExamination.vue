@@ -2,7 +2,7 @@
     <div id="dermatologistExamination">
         <div class="homepage_style ">
            <span style="float: left; margin: 15px">
-                <img class="image_style space_style" style="width: 170px; height: 50px; left:10px;"
+                <img @click="proba" class="image_style space_style" style="width: 170px; height: 50px; left:10px;"
                 src="@/images/benu.png">
                 <b-button style="margin-left:20px" pill class = "btn btn-info btn-lg space_style" v-on:click = "showProfile">Profil</b-button>
                 <b-button pill class = "btn btn-info btn-lg space_style" v-on:click = "showPatients">Pacijenti</b-button>
@@ -85,12 +85,12 @@
                                 <td>{{drug.name}}</td>
                                 <td>{{drug.type}}</td>
                                 <td>{{drug.drugForm}}</td>
-                                <b-button 
+                                <b-button pill
                                 variant="info" 
                                 style="margin-top:1%;" 
                                 v-on:click="getDrugSpecification(drug.id)" 
                                 @click="selectedDrug = drug, isDrugChecked= false"
-                                v-b-modal.modal-1>drug specification</b-button>
+                                v-b-modal.modal-1>specifikacija leka</b-button>
                                 </tr>
                             </tbody>
                         </table>
@@ -312,6 +312,9 @@ export default {
         logOut : function(){
             localStorage.removeItem('token');
             window.location.href = "/login";
+        },
+         proba:function(){
+             window.location.href = "/";
         },
         cancel() {
             this.$refs['modal-ref'].hide();

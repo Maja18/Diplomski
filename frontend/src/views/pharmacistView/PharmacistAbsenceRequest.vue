@@ -1,23 +1,25 @@
 <template>
     <div id="pharmacistAbsenceRequest">
         <div class="homepage_style ">
-           <span style="float: left; margin: 15px;">
-                <img class="image_style space_style" style="width: 50px; height: 50px; margin-right:10px;" src="@/images/natural-medicine.png">
-                <button class = "btn btn-info btn-lg space_style" v-on:click = "showHomepage">Home</button>
-                <button class = "btn btn-info btn-lg space_style" v-on:click = "showProfile">Profile</button>
-                <button class = "btn btn-info btn-lg space_style" v-on:click = "showPatients">My patients</button>
-                <button class = "btn btn-info btn-lg space_style" v-on:click = "showWorkCalendar">Work calendar</button>
-                <button class = "btn btn-info btn-lg space_style" v-on:click = "showAbsenceRequest">Create a vacation</button>
-                <button class = "btn btn-info btn-lg space_style" v-on:click = "showConsalting">Consaltings</button>
-                <button class = "btn btn-info btn-lg space_style" v-on:click = "showNewConsalting">Schedule new consalting</button>
-                <button class = "btn btn-info btn-lg space_style" v-on:click = "showDispensingDrugs">Dispensing drugs</button>
+          <span style="float: left; margin: 15px;">
+                <img @click="proba" class="image_style space_style" style="width: 170px; height: 50px; left:10px;"
+                src="@/images/benu.png">
+                <b-button style="margin-left:20px" pill variant="info" class = "btn btn-info btn-lg space_style" v-on:click = "showProfile">Profil</b-button>
+                <b-button pill variant="info" class = "btn btn-info btn-lg space_style" v-on:click = "showPatients">Pacijenti</b-button>
+                <b-button pill variant="info" class = "btn btn-info btn-lg space_style" v-on:click = "showWorkCalendar">Radni kalendar</b-button>
+                <b-button pill variant="info" class = "btn btn-info btn-lg space_style" v-on:click = "showAbsenceRequest">Odmor</b-button>
+                <b-button pill variant="info" class = "btn btn-info btn-lg space_style" v-on:click = "showConsalting">Savetovanja</b-button>
+                <b-button pill variant="info" class = "btn btn-info btn-lg space_style" v-on:click = "showNewConsalting">Novo savetovanje</b-button>
+               
             </span>
-              <span  style="float:right;margin:15px">
-                    <button class = "btn btn-lg btn-light" style="margin-right:20px;" v-on:click = "logOut">Log Out</button>
-                </span>
+            <span  style="float:right;margin:15px">
+             <b-button pill class = "btn btn-info btn-lg space_style" v-on:click = "logOut">
+                     <b-icon icon="power"   aria-hidden="true"></b-icon> Odjavi se
+            </b-button>
+            </span>
         </div>
         <b-card 
-                style=" background: #e6f9fc; 
+                style=" background: white; 
                 position: fixed;
                 top: 9.5%;
                 width: 100%;
@@ -31,14 +33,14 @@
                     background-color: #ffffff; 
                     left:25%;
                     top: 18.5%;">
-                    <h3 class="ml-n mt-6 strong text_position" style="color: #17a2b8;"><b>Absence request</b></h3>
+                   <h3 class="ml-n mt-6 strong text_position" style="color: #17a2b8;"><b>Zahtev za odsustvo</b></h3>
                         <b-dropdown 
-                        text="Select absence type:" 
+                        text="Izaberite tip odsustva:" 
                         variant="outline-info" 
                         style="width: 14%;
                         position: fixed;
                         left: 27%;
-                        margin-top: 1%;" 
+                        margin-top: 2%;" 
                         id="dropdown-divider">
                             <b-dropdown-item  
                             v-for="absence in absenceRequests" v-bind:key="absence"
@@ -48,8 +50,8 @@
                         </b-dropdown>
                         <h5 
                         class="ml-n mt-6 strong text-left" 
-                        style="margin-top:12%; margin-left:4%;">
-                            <b>Select start date:</b>
+                        style="margin-top:15%; margin-left:4%;">
+                            <b>Izaberite početak:</b>
                         </h5>
                         <b-form-input 
                         type="date" 
@@ -60,8 +62,8 @@
                         </b-form-input>
                         <h5 
                         class="ml-n mt-6 strong text-left" 
-                        style="margin-top:2%; margin-left:4%;">
-                            <b>Select end date:</b>                    
+                        style="margin-top:4%; margin-left:4%;">
+                            <b>Izaberite kraj:</b>                            
                         </h5>
                         <b-form-input 
                         type="date" 
@@ -71,7 +73,7 @@
                         placeholder="choose end date">
                         </b-form-input>
                             
-                        <b-button class="btn btn-info btn-lg object_space" style="background-color:#17a2b8; width:500px;" v-on:click = "sendRequest">Send request</b-button>
+                        <b-button pill variant="info" class = "btn btn-info btn-lg space_style" style=" width:200px; margin-top:30px" v-on:click = "sendRequest">Pošalji zahtev</b-button>
                     </div>
             </b-card>
     </div>
@@ -131,6 +133,9 @@ export default {
         showDispensingDrugs : function(){
             window.location.href = "/pharmacistDispensingDrugs";
         },
+         proba:function(){
+             window.location.href = "/";
+        },
         sendRequest: function() {
         let token = localStorage.getItem('token').substring(1, localStorage.getItem('token').length-1);
             if(this.startDate == null){
@@ -181,7 +186,7 @@ export default {
         left: 0;
         z-index: 999;
         width: 100%;
-        height: 70px;
+        height: 73px;
     }
     .space_style{
         margin-right:5px

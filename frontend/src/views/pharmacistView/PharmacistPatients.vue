@@ -1,46 +1,47 @@
 <template>
     <div id="pharmacistPatients">
         <div class="homepage_style ">
-           <span style="float: left; margin: 15px;">
-                <img class="image_style space_style" style="width: 50px; height: 50px; margin-right:10px;" src="@/images/natural-medicine.png">
-                <button class = "btn btn-info btn-lg space_style" v-on:click = "showHomepage">Home</button>
-                <button class = "btn btn-info btn-lg space_style" v-on:click = "showProfile">Profile</button>
-                <button class = "btn btn-info btn-lg space_style" v-on:click = "showPatients">My patients</button>
-                <button class = "btn btn-info btn-lg space_style" v-on:click = "showWorkCalendar">Work calendar</button>
-                <button class = "btn btn-info btn-lg space_style" v-on:click = "showAbsenceRequest">Create a vacation</button>
-                <button class = "btn btn-info btn-lg space_style" v-on:click = "showExaminations">Consaltings</button>
-                <button class = "btn btn-info btn-lg space_style" v-on:click = "showNewExamination">Schedule new consalting</button>
-                <button class = "btn btn-info btn-lg space_style" v-on:click = "showDispensingDrugs">Dispensing drugs</button>
+          <span style="float: left; margin: 15px;">
+                <img @click="proba" class="image_style space_style" style="width: 170px; height: 50px; left:10px;"
+                src="@/images/benu.png">
+                <b-button style="margin-left:20px" pill variant="info" class = "btn btn-info btn-lg space_style" v-on:click = "showProfile">Profil</b-button>
+                <b-button pill variant="info" class = "btn btn-info btn-lg space_style" v-on:click = "showPatients">Pacijenti</b-button>
+                <b-button pill variant="info" class = "btn btn-info btn-lg space_style" v-on:click = "showWorkCalendar">Radni kalendar</b-button>
+                <b-button pill variant="info" class = "btn btn-info btn-lg space_style" v-on:click = "showAbsenceRequest">Odmor</b-button>
+                <b-button pill variant="info" class = "btn btn-info btn-lg space_style" v-on:click = "showConsalting">Savetovanja</b-button>
+                <b-button pill variant="info" class = "btn btn-info btn-lg space_style" v-on:click = "showNewConsalting">Novo savetovanje</b-button>
+               
             </span>
-              <span  style="float:right;margin:15px">
-                    <button class = "btn btn-lg btn-light" style="margin-right:20px;" v-on:click = "logOut">Log Out</button>
-                </span>
+            <span  style="float:right;margin:15px">
+             <b-button pill class = "btn btn-info btn-lg space_style" v-on:click = "logOut">
+                     <b-icon icon="power"   aria-hidden="true"></b-icon> Odjavi se
+            </b-button>
+            </span>
         </div>
-        <h4 class="text-left"
-        style="margin-left:2%;
-        margin-top:1%;">
-        <b>Patient search:</b>
-        </h4>
+       <h3 class="text-left"
+        style="margin-left:4%;
+        margin-top:2%;">
+        Pretraga pacijenta:
+        </h3>
         <div
         style="margin-top: 2%;
-        margin-left: 2%;">
+        margin-left: 4%;">
             <b-form inline>
                 <b-form-input
                 v-model="nameForSerch"
                 class="mb-2 mr-sm-2 mb-sm-0"
-                placeholder="Patient name"
+               placeholder="Ime pacijenta"
                 ></b-form-input>
                 <b-form-input 
                 v-model="surnameForSearch"
-                placeholder="Patient last name">
+                placeholder="Prezime pacijenta">
                 </b-form-input>
-                <b-button style="margin-left:2%;" v-on:click = "searchPatient" variant="info">Search</b-button>
-                <b-button style="margin-left:2%;" v-on:click = "showPatients" variant="info">Refresh</b-button>
+                 <b-button pill variant="info" style="margin-left:2%; width:120px" v-on:click = "searchPatient">Traži</b-button>
             </b-form>
         </div>
-        <div style="height:25px"></div>
-            <h3>Patients</h3>
-            <table class="table table-striped" style="width:100%;">
+        <div style="height:25px;margin-top:10px"></div>
+            <h3>Pacijenti</h3>
+            <table class="table table-striped" style="width:92%;margin-left:57px;margin-top:30px">
                 <thead class="thead-light" v-if="searched == 0">
                     <tr>
                     <th scope="col" 
@@ -72,7 +73,7 @@
                     <td>{{patient.startDate}}</td>
                     <td>{{patient.startTime}}</td>
                     <router-link :to="{ name: 'PharmacistConsalting', params: {selectedCounseling: patient.examinationID}}" class="search-btn">
-                        <b-button variant="info" style="margin-top:1%;">start examination</b-button>
+                        <b-button  pill class="btn btn-primary" variant="info" style="margin-top:1%;color:#2F4F4F">započni pregled</b-button>
                     </router-link>
                     </tr>
                 </tbody>
@@ -88,12 +89,12 @@ export default {
     data() {
       return {
         fields: [
-          { key: 'name', label: 'Name' },
-          { key: 'surname', label: 'Surname' },
+         { key: 'name', label: 'Ime' },
+          { key: 'surname', label: 'Prezime' },
           { key: 'email', label: 'Email' },
-          { key: 'startDate', label: 'Start date'},
-          { key: 'startTime',label: 'Start time'},
-          { key: 'btn', label: 'Chose examination'}
+          { key: 'startDate', label: 'Početak'},
+          { key: 'startTime',label: 'Kraj'},
+          { key: 'btn', label: ''}
         ],
         selectedCounseling: '',
         patients: [],
@@ -143,6 +144,9 @@ export default {
         },
         showNewExamination: function(){
             window.location.href = "/pharmacistNewConsalting";
+        },
+         proba:function(){
+             window.location.href = "/";
         },
         logOut : function(){
             localStorage.removeItem('token');
@@ -247,7 +251,7 @@ export default {
         left: 0;
         z-index: 999;
         width: 100%;
-        height: 70px;
+        height: 73px;
     }
 
     .space_style{
